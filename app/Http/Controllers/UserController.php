@@ -8,7 +8,7 @@ use Auth, Response, Input, Hash;
 use \App\Models\User;
 use \App\Models\App;
 use \App\Models\User_App_Comment;
-use \App\Models\User_App_Suck;
+use \App\Models\User_App_Favorite;
 
 class UserController extends Controller {
 
@@ -131,8 +131,8 @@ class UserController extends Controller {
 		$user = User::where('id','=',$id)
 					->first();
 		
-		$user_suck_counts = User::where('users.id','=',$id)
-								->join('user__app__sucks','user__app__sucks.u_id','=','users.id')
+		$user_favorite_counts = User::where('users.id','=',$id)
+								->join('user__app__favorite','user__app__favorite.u_id','=','users.id')
 								->count();
 
 		$user_coment_counts = User::where('users.id','=',$id)
@@ -146,17 +146,17 @@ class UserController extends Controller {
 											->orderBy('user__app__comments.created_at','desc')
 											->get();
 
-		$user_suck_list = User_App_Suck::join('apps','apps.id','=','user__app__sucks.a_id')
-										->join('users','users.id','=','user__app__sucks.u_id')
-										->select('user__app__sucks.id','apps.id as app_id','apps.name as app_name','apps.img_url as app_img','user__app__sucks.created_at')
+		$user_favorite_list = User_App_Suck::join('apps','apps.id','=','user__app__favorite.a_id')
+										->join('users','users.id','=','user__app__favorite.u_id')
+										->select('user__app__favorite.id','apps.id as app_id','apps.name as app_name','apps.img_url as app_img','user__app__favorite.created_at')
 										->where('users.id','=',$id)
-										->orderBy('user__app__sucks.created_at','desc')
+										->orderBy('user__app__favorite.created_at','desc')
 										->get();		
 
-		$user->suck_counts = $user_suck_counts;
+		$user->favorite_counts = $user_favorite_counts;
 		$user->comments_counts = $user_coment_counts;
 		$user->comment_list = $user_comment_list;
-		$user->suck_list = $user_suck_list;
+		$user->favorite_list = $user_favorite_list;
 		$user->status = 'success';
 		return $user;
 	}
