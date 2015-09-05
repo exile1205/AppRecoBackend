@@ -38,7 +38,7 @@ class AppController extends Controller {
 
 		//multisearch
 		$app_list = App::leftjoin('user__app__favorite','user__app__favorite.a_id','=','apps.id')
-						->select('apps.id','apps.name','apps.img_url','apps.genre','apps.rating',\DB::raw('count(user__app__favorite.id) as suck_count'))
+						->select('apps.id','apps.name','apps.img_url','apps.genre','apps.rating',\DB::raw('count(user__app__favorite.id) as favorite_count'))
 						->groupBy('apps.id')
 						->orderBy('suck_count','desc')
 						->orderBy('id','asc');
