@@ -40,7 +40,7 @@ class AppController extends Controller {
 		$app_list = App::leftjoin('user__app__favorite','user__app__favorite.a_id','=','apps.id')
 						->select('apps.id','apps.name','apps.img_url','apps.genre','apps.rating',\DB::raw('count(user__app__favorite.id) as favorite_count'))
 						->groupBy('apps.id')
-						->orderBy('suck_count','desc')
+						->orderBy('favorite_count','desc')
 						->orderBy('id','asc');
 		if(Input::has('name')){
 		 	$name = Input::get('name');
