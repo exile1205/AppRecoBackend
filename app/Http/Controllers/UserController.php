@@ -146,7 +146,7 @@ class UserController extends Controller {
 											->orderBy('user__app__comments.created_at','desc')
 											->get();
 
-		$user_favorite_list = User_App_Suck::join('apps','apps.id','=','user__app__favorite.a_id')
+		$user_favorite_list = User_App_Favorite::join('apps','apps.id','=','user__app__favorite.a_id')
 										->join('users','users.id','=','user__app__favorite.u_id')
 										->select('user__app__favorite.id','apps.id as app_id','apps.name as app_name','apps.img_url as app_img','user__app__favorite.created_at')
 										->where('users.id','=',$id)

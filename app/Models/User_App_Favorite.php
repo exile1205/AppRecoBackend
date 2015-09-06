@@ -6,7 +6,7 @@ class User_App_Favorite extends Model {
 
 	//
 	//
-	protected $table = 'user__app__favorites';
+	protected $table = 'user__app__favorite';
 
 	/**
 	 * The attributes that are mass assignable.

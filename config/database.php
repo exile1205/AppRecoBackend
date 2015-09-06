@@ -56,7 +56,7 @@ return [
 			'driver'    => 'mysql',
 			'host'      => env('DB_HOST', 'localhost'),
 			'database'  => env('DB_DATABASE', 'appReco'),
-			//'unix_socket'   => '/Applications/MAMP/tmp/mysql/mysql.sock',
+			'unix_socket'   => '/Applications/MAMP/tmp/mysql/mysql.sock',
 			'username'  => env('DB_USERNAME', 'root'),
 			'password'  => env('DB_PASSWORD', 'root'),
 			'charset'   => 'utf8',

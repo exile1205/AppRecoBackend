@@ -38,9 +38,9 @@ class AppController extends Controller {
 
 		//multisearch
 		$app_list = App::leftjoin('user__app__favorite','user__app__favorite.a_id','=','apps.id')
-						->select('apps.id','apps.name','apps.img_url','apps.genre','apps.rating',\DB::raw('count(user__app__favorite.id) as favorite_count'))
+						->select('apps.id','apps.name','apps.img_url','apps.rating_users','apps.genre','apps.rating',\DB::raw('count(user__app__favorite.id) as favorite_count'))
 						->groupBy('apps.id')
-						->orderBy('favorite_count','desc')
+						->orderBy('apps.rating_users','desc')
 						->orderBy('id','asc');
 		if(Input::has('name')){
 		 	$name = Input::get('name');
@@ -147,7 +147,7 @@ class AppController extends Controller {
 					if(empty($check_suck)){
 						return Response::json(array('message' => 'Not suck.', 'status' => 'error'));
 					}else{
-						$delete_suck = User_App_Suck::where('user__app__favorite.id','=',$check_suck['id'])
+						$delete_suck = User_App_Favorite::where('user__app__favorite.id','=',$check_suck['id'])
 										->delete();
 						return Response::json(array('message' => 'Delete success.', 'status' => 'success'));
 					}

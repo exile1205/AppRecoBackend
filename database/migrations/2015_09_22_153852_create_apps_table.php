@@ -19,6 +19,10 @@ class CreateAppsTable extends Migration {
 			$table->string('name');
 			$table->string('genre',20);
 			$table->float('rating');
+			$table->float('r1_score');
+			$table->float('r2_score');
+			$table->float('r3_score');
+			$table->float('total_score');
 			$table->string('description');
 			$table->integer('rating_users');
 			$table->string('arm',10);
