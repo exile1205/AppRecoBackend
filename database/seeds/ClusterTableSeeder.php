@@ -8,27 +8,27 @@ class ClusterTableSeeder extends Seeder {
 	{
 		Cluster::create([
 			'id'  			=> '1',
-			'parent_id'		=> null,
-			'node'			=> '1',
+			'cluster'		=> '1',
+			'subcluster'	=> '2',
 			'x'				=> '1',
 			'y'				=> '1',
-			'layer'			=> '2',
+			'radar_chart'	=> 'link1',
 		]);
 		Cluster::create([
 			'id'  			=> '2',
-			'parent_id'		=> '1',
-			'node'			=> '1',
+			'cluster'		=> '1',
+			'subcluster'	=> '4',
 			'x'				=> '1',
 			'y'				=> '2',
-			'layer'			=> '3',
+			'radar_chart'	=> 'link2',
 		]);
 		Cluster::create([
 			'id'  			=> '3',
-			'parent_id'		=> '1',
-			'node'			=> '1',
+			'cluster'		=> '2',
+			'subcluster'	=> '4',
 			'x'				=> '2',
-			'y'				=> '1',
-			'layer'			=> '3',
+			'y'				=> '2',
+			'radar_chart'	=> 'link3',
 		]);
 
 	}

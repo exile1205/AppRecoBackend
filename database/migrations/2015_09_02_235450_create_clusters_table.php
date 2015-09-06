@@ -15,11 +15,11 @@ class CreateClustersTable extends Migration {
 		Schema::create('clusters', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('parent_id')->unsigned()->nullable();
-			$table->tinyInteger('node')->nullable();
-			$table->integer('x');
-			$table->integer('y');
-			$table->integer('layer');
+			$table->integer('cluster');
+			$table->integer('subcluster');
+			$table->integer('x')->nullable();
+			$table->integer('y')->nullable();
+			$table->string('radar_chart');
 			$table->timestamps();
 		});
 	}
